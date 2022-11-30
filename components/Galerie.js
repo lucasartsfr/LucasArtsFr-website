@@ -54,8 +54,8 @@ function Galerie({List, searchWord}){
         
         CloseExpand.classList.add('Show') // Show Hide Button       
         
-        Select.setAttribute('data-ratio', Ratio)
-        StateExpand["Src"] = e.currentTarget.getAttribute('srcset').split(',')[0];
+        Select.setAttribute('data-ratio', Ratio);
+        StateExpand["Src"] = window.location.origin+e.currentTarget.getAttribute('srcset').split(',')[0];
         StateExpand["SrcFull"] = e.currentTarget.src.split('q')[0]+"q=100";
         StateExpand["Width"] = Coord.width;
         StateExpand["Height"] = Coord.height;
