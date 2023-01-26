@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "cd ./node_modules/react-medium-image-zoom && npm install && npm run build",
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
