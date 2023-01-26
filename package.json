@@ -1,6 +1,6 @@
 {
   "name": "photobook",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "postinstall": "cd ./node_modules/react-medium-image-zoom && npm install && npm run build",
@@ -15,11 +15,9 @@
     "embla-carousel-autoplay": "^7.0.6",
     "embla-carousel-react": "^7.0.6",
     "next": "^13.1.5",
-    "next-before-after-slider-component": "file:../../NODEMODULE/next-before-after-slider-component",
-    "next-circular-menu": "file:../../NODEMODULE/next-circular-menu",
-    "next-compare-image": "file:../../NODEMODULE/next-compare-image",
+    "next-before-after-slider-component": "github:lucasartsfr/next-before-after-slider-component",
+    "next-circular-menu": "github:lucasartsfr/next-circular-menu",
     "react": "^18.2.0",
-    "react-before-after-slider-component": "^1.1.6",
     "react-compare-image": "^3.3.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
