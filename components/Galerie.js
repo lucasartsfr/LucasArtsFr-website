@@ -1,117 +1,70 @@
 import NextImage from "next/image";
 import Masonry from 'react-masonry-css'
-import React from "react";
-import Expand from "./Expand";
-import { useState, useRef } from "react";
+import React, { useEffect } from "react";
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
-function Galerie({List, searchWord}){
+import { useContext } from 'react';
+import { NextContext } from '../pages/_app';
 
+function Galerie({List}){
 
-    const [StateExpand, setStateExpand] = useState({
-        Width : 0,
-        Height : 0,
-        Left : 0,
-        Top : 0,
-        Src : "",
-        SrcFull : ""
-    })
-    const [Initial, setInitial] = useState("0");
+    const { searchWord, searchFiltre } = useContext(NextContext);
 
-    const ExpandClose = (e) =>{     
-        document.body.classList.remove('NoScroll');   
-        const CloseExpand = e.currentTarget; //
-        const Select = document.querySelector('.Expand'); // Get Expanded Item
-        // Set New State Property
-
-    
-        //const Coord = document.getElementById(Initial).getBoundingClientRect(); // Get Coord Initial element If Resize
-        // StateExpand["Width"] = Coord.width;
-        // StateExpand["Height"] = Coord.height;
-        // StateExpand["Top"] = Coord.top;
-        // StateExpand["Left"] = Coord.left;
-        // setStateExpand({...StateExpand})
-        
-        Select.classList.remove('Center'); // Let Item Go Back
-        setTimeout(()=>{
-            document.querySelector('.invisible').classList.remove('invisible'); 
-         }, 300)        
-               
-        setTimeout(()=>{
-            Select.classList.remove('Smooth');               
-            Select.classList.add('hidden');    
-            CloseExpand.classList.remove('Show');
-         }, 400)
-    }
-
-    const ExpandFunction = (e) =>{        
-        document.body.classList.add('NoScroll') // No Scroll
-        const Source = e.currentTarget;
-        const Coord = Source.getBoundingClientRect(); // Get Coords of Clicked Item   
-        const CloseExpand = document.querySelector('.CloseExpand'); // Get Closer DIV
-        const Select = document.querySelector('.Expand'); // Get Image To Expand
-        Select.classList.remove('hidden') // Show Select Image
-        const Ratio = ((Coord.width / Coord.height) > 1) ? "Horizontal" : "Vertical";
-        
-        CloseExpand.classList.add('Show') // Show Hide Button       
-        
-        Select.setAttribute('data-ratio', Ratio);
-        StateExpand["Src"] = window.location.origin+e.currentTarget.getAttribute('srcset').split(',')[0].split(' ')[0];
-        StateExpand["SrcFull"] = e.currentTarget.src.split('q')[0]+"q=100";
-        StateExpand["Width"] = Coord.width;
-        StateExpand["Height"] = Coord.height;
-        StateExpand["Top"] = Coord.top;
-        StateExpand["Left"] = Coord.left;
-
-        setStateExpand({...StateExpand})
-        setInitial(e.currentTarget.id);
-        
-        setTimeout(()=>{            
-            Source.classList.add('invisible');
-            Select.classList.add('Center', 'Smooth')
-        }, 400)
-        setTimeout(()=>{
-            Select.src = StateExpand.SrcFull;
-            console.log('ok')
-        },1000)
-    }
-    
-    const Photo = Object.keys(List).reverse().map((id) =>{
+    //   useEffect(()=>{
+    //     setTimeout(() =>{
+    //         [...document.querySelectorAll('[data-rmiz-modal-img]')].map((item =>{
+    //             const Scale = parseFloat(item.style.transform.split("scale")[1].replace(/[^\d.-]/g, ''));
+    //             item.style.borderRadius = 12/Scale+"px";
+    //         }))
+    //     },1000)            
+    //   }, [])
+      
+    var RealId = 1; 
+    const Photo = Object.keys(List).reverse().map((id, index) =>{
+        // Shortcut for List Item
         const Img = List[id];
-        const Factor = 5;
-        
-        const Check = searchWord == "" || List[id].Nom.toLowerCase().includes(searchWord) || List[id].Filtres.toLowerCase().includes(searchWord) || 
-                      List[id].Localisation.Pays.toLowerCase().includes(searchWord) || List[id].Localisation.Departement.toLowerCase().includes(searchWord) || 
-                      List[id].Localisation.Region.toLowerCase().includes(searchWord) || List[id].Localisation.Ville.toLowerCase().includes(searchWord);
+        // Image Size Factore
+        const Factor = 8;        
+        // Check if Input Of Filtre
+        const Check = (searchFiltre) ? List[id].Filtres.toLowerCase().includes(searchWord) : searchWord == "" || List[id].Nom.toLowerCase().includes(searchWord) || List[id].Filtres.toLowerCase().includes(searchWord) || List[id].Localisation.Pays.toLowerCase().includes(searchWord) || List[id].Localisation.Departement.toLowerCase().includes(searchWord) || 
+                      List[id].Localisation.Region.toLowerCase().includes(searchWord) || List[id].Localisation.Ville.toLowerCase().includes(searchWord) || List[id].Parametres.Ouverture.toLowerCase().includes(searchWord) || List[id].Parametres.ISO.toLowerCase().includes(searchWord) || List[id].Parametres.Shutter.toLowerCase().includes(searchWord) || List[id].Parametres.Focale.toLowerCase().includes(searchWord);
+        // Set LCP Priority
+        const Priority = (id == "141" || id == "138" || id == "139") && true;  
+        // FadeInAnimation (With Individual Index to Allo Fast Animation on filter)
+        const FadeIn = Check && {animationDelay: `${RealId++*80}ms`, opacity: 0};
+        // Return Images
         return(
-            Check && <div key={id} className="Masonry-Item" width={Img.Ratio.Width/Factor} height={Img.Ratio.Height/Factor}>                
-                <NextImage  
-                    onClick={ExpandFunction}
-                    className="Masonry-Img" 
-                    layout="responsive"
-                    // sizes="(max-width: 10px) 2px"
-                    // placeholder="blur" blurDataURL={`https://cdn.lucasarts.fr/small/${id}.jpg`}
-                    id={id} 
-                    width={Img.Ratio.Width/Factor} 
-                    height={Img.Ratio.Height/Factor} 
-                    alt={Img.Nom} 
-                    // data-full={`https://cdn.lucasarts.fr/full/${id}.jpg`}
-                    src={`https://cdn.lucasarts.fr/full/${id}.jpg`}
-                /> 
+            Check && 
+            // width={Img.Ratio.Width/Factor} height={Img.Ratio.Height/Factor}
+            <div key={id} className="Masonry-Item"> 
+                <Zoom classDialog="Dialog" zoomMargin={15} zoomImg={{src: 'https://cdn.lucasarts.fr/full/'+id+'.jpg', srcSet: 'https://cdn.lucasarts.fr/full/'+id+'.jpg'}}>         
+                    <NextImage    
+                        style={FadeIn}         
+                        className="Masonry-Img FadeIn" 
+                        id={id} 
+                        width={Img.Ratio.Width/Factor} 
+                        height={Img.Ratio.Height/Factor} 
+                        alt={Img.Nom} 
+                        priority={Priority}
+                        src={`https://cdn.lucasarts.fr/full/${id}.jpg`}
+                    />                    
+                </Zoom>
+                <NextImage width={20} height={20}  alt={`Glow for ${id}`} 
+                        className="Glow Hidden" src={`https://cdn.lucasarts.fr/small/${id}.jpg`} 
+                    />
             </div>
         )
     });
 
     return(
-        <>
-            <Expand Close={ExpandClose} key="change" Data={StateExpand}/>  
-            <Masonry
-                breakpointCols={{default: 4, 1100: 3, 700: 2, 500: 1}}
-                className="Masonry-Grid"
-                columnClassName="Masonry-Col">   
-                {Photo}
-            </Masonry>
-        </>
-    )
+        <Masonry
+            breakpointCols={{default: 4, 1100: 3, 700: 2, 500: 1}}
+            className="Masonry-Grid SpaceHeaderContainer"
+            columnClassName="Masonry-Col">   
+            {Photo}
+        </Masonry>
+     )
 }
 
 export default Galerie;

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "cd ./node_modules/react-medium-image-zoom && npm install && npm run build",
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
@@ -10,16 +11,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "@szhsin/react-menu": "^3.3.1",
+    "embla-carousel-autoplay": "^7.0.6",
+    "embla-carousel-react": "^7.0.6",
+    "next": "^13.1.5",
+    "next-before-after-slider-component": "file:../../NODEMODULE/next-before-after-slider-component",
+    "next-circular-menu": "file:../../NODEMODULE/next-circular-menu",
+    "next-compare-image": "file:../../NODEMODULE/next-compare-image",
+    "react": "^18.2.0",
+    "react-before-after-slider-component": "^1.1.6",
+    "react-compare-image": "^3.3.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-masonry-css": "^1.0.16",
-    "react-scroll": "^1.8.8"
+    "react-medium-image-zoom": "^5.1.2",
+    "react-parallax": "^3.5.1",
+    "react-scroll": "^1.8.8",
+    "react-uuid": "^2.0.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "eslint": "8.26.0",
-    "eslint-config-next": "13.0.0"
+    "eslint-config-next": "^13.1.5"
   }
 }

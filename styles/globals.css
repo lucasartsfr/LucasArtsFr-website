@@ -9,6 +9,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -20,15 +21,93 @@ body {
     background-color: var(--BG);
 }
 
+a{
+  text-decoration: none;
+}
+
 :root{
   --Gap: 15px;
   --RadiusPhoto: 0px;
-  --HeaderHeight: 100px;
-  --BG : #fff;
-  --Filter : invert(1);
-  --Text : #121212;
+  --HeaderHeight: 50px;
+  --BG : #0e0e0e;
+  --Filter : invert(0);
+  --Text : #ffffff;
   --MainColor : #2b87e2;
   --LineHeight : 2em;
+  --BorderRadius: 12px;
+  --Border: 1px solid rgba(255, 255, 255, .1);
+  --Left : 250px;
+  --CardBg : #141414;
+  --HoverSocial : white;
+  --LightLoader :   linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+  --DarkLoader :   linear-gradient(to right, #141414 8%, #1d1d1d 18%, #141414 33%);
+
+  /* Circle Menu */
+  --CMBorderColor : 0rem solid #000000;
+  --CMBackgroundColor : #ffffff;
+  --CMTextColor : #000000;
+  --CMRadius : 50%;
+  --CMPadding : 0.5rem;
+  --CMTransition : ease 0.4s;
+  --CMTexteActiveColor : #ffffff;
+  --CMBackgroundActiveColor : #000000;
+  --CMBurgerBg : #000000;
+  --CMBurgerRadius : 1em;
+  --CMBurgerActiveBg : #ffffff;
+}
+
+::selection {
+  background: none;
+}
+
+.Blur{
+  background-color: rgba(0, 0, 0, .8)!important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+[data-rmiz-modal-overlay="visible"]{
+  background-color: rgba(0, 0, 0, .8)!important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.Hidden{
+  opacity: 0;
+  transition: .4s;
+}
+
+.ButtonComp{
+  height: 40px;
+  min-width: 40px;
+  font-size: 0.9rem;
+  background: rgb(89, 48, 229);
+  color: rgb(255, 255, 255);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0px 12px;
+  white-space: nowrap;
+  max-width: 100%;
+  transition: 0.2s ease 0s, color 0.2s ease 0s;
+  text-decoration: none;
+  margin: 0px 5px;
+  width: fit-content;
+}
+
+.ButtonComp svg {
+  margin: 0 5px;
+}
+
+.ButtonComp:hover {
+  background: rgb(184, 122, 255);
+  color: rgb(255, 255, 255);
+  cursor: pointer;  
+  border-radius: 0px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -53,6 +132,59 @@ body {
 }
 
 /* Header*/ 
+
+.FloatHader{
+  width: 200px;
+  height: 50px;
+  background-color: #00000080;
+  backdrop-filter: blur(30px);
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100px;
+  margin-left: calc(var(--Left) / 2 );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.FloatButton{
+  color: white;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  flex: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.FloatCircle{
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  position: absolute;
+  background-color: red;
+  border-radius: 100px ;
+}
+
+.CircularMenu{
+  position: fixed!important;
+  bottom: 30px;
+  right: 30px;
+}
+
+.MenuLink > * {
+  pointer-events: none;
+}
+
+.MenuLink a{
+  color: inherit;
+}
+
 .Header{
   width: 100%;
   height: var(--HeaderHeight);
@@ -64,17 +196,73 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--Gap);
-  padding: 0 calc(2 * var(--Gap));  
+  /* padding: 0 calc(2 * var(--Gap));   */
   background-color: var(--BG);
+  border-bottom: var(--Border);
 }
 
 .Left{  
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  flex: 1;
+  justify-content: center;
+  flex: 0 0 auto;
+  background-color: var(--BG);
+  height: 100%;
+  width: var(--Left);
+  border-right: var(--Border);
+  overflow: hidden;
 }
 
+.LeftContent{
+  width: 90%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.LeftContent h2{
+  color: white;
+  margin: 0;
+}
+
+.LeftContent span{
+  color: white;
+  font-size: .7rem;
+}
+
+.LeftMenu{
+  width: 32px;
+  height: 32px;
+  background-color: red;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.UserContainer{
+  border-radius: 100px;
+  /* border: 1.5px solid white; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: fit-content;
+  margin-right: 10px;
+}
+
+.QuoteContainer{
+  min-width: 140px;
+}
+
+.Right .UserContainer{
+  margin-right: 0px;
+}
+
+.User{
+  max-width: 32px;
+  border-radius: 100px;
+  cursor: pointer;
+}
 /* LINK 2 */
 
 .LinkContainer{
@@ -173,8 +361,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
+  text-align: center;
+  height: 100%;
+  background-color: var(--BG);
+  padding: 7px var(--Gap);
+  width: 200px;
 }
 
 img.Logo {
@@ -185,13 +377,46 @@ img.Logo {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 1;
+  height: 100%;
+  background-color: var(--BG);
+  /* flex: 1 1 auto; */
+  padding: 5px;
+}
+
+.RSIcon svg{
+  background: none;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  border-radius: 999px;
+  border: none;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.RSIcon svg:hover{
+  /* background: rgb(32, 32, 32); */
+  color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 
 .Right a{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 5px;
+}
+
+.RSIcon{
+  border-radius: 100px;
+  transition: .2s;
+}
+
+.RSIcon:hover{ 
+  background-color: var(--HoverSocial);
 }
 
 /* Container*/
@@ -209,16 +434,22 @@ img.Logo {
   display: flex;
   /* margin-left: calc(-1 * var(--Gap)); */
   width: auto;
-  padding-right: calc(2 * var(--Gap));
-  padding-left: var(--Gap);
+  width: calc(100% - var(--Left));
+  padding-right: calc(1 * var(--Gap));
+  padding-top: var(--Gap);
+  margin-bottom: var(--Gap);
+  /* padding-left: var(--Gap); */
   /* max-width: 1400px; */
   margin: auto;
-  margin-top: var(--HeaderHeight);
+  height: calc(100vh - var(--HeaderHeight));
+  overflow: scroll;
+  background-color: #0e0e0e;
 }
 
 .Masonry-Col{
   padding-left: var(--Gap); /* gutter size */
   background-clip: padding-box;
+  height: fit-content;
 }
 
 .Content{
@@ -236,16 +467,27 @@ img.Logo {
 
 /* Style your items */
 .Masonry-Col > .Masonry-Item { /* change div to reference your elements you put in <Masonry> */
+  position: relative;
   margin-bottom: var(--Gap);
   border-radius: var(--RadiusPhoto);
-  overflow: hidden;
   cursor: pointer;
   transition: var(--Transition);
   vertical-align: bottom;
-  position: relative;
+  border-radius: var(--BorderRadius);
   /* animation: Loader 1s infinite ease-in-out;
   -webkit-animation: Loader 1s infinite ease-in-out; */
   /*box-shadow: 10px 15px 20px 0px rgb(0 0 0 / 12%);*/
+}
+
+/* Border Radius must be devide by Scale Item*/
+[data-rmiz-modal-img]{
+  /* border-radius: calc(var(--BorderRadius) * 1.8); */
+  transition: 0.6s!important;
+}
+
+.Masonry-Item:hover .Hidden{
+ 
+ opacity: 1;
 }
 
 .Masonry-Item:not(.Squarre) {
@@ -258,7 +500,10 @@ img.Logo {
   justify-content: center;
   width: 100%;
   height: 100%;
-  transition: .2s;
+  position: relative;
+  z-index: 2;
+  border-radius: var(--BorderRadius);
+  /* transition: .2s; */
 }
 .Masonry-Item:hover .Masonry-Img{
   /* transform: scale(1.05); */
@@ -352,6 +597,17 @@ img.Logo {
 }
 
 
+.Loader{
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #F6F6F6;
+  background: var(--DarkLoader);
+  background-size: 800px 104px;
+}
+
 .Masonry-Item {
   animation-duration: 1.25s;
   animation-fill-mode: forwards;
@@ -359,57 +615,58 @@ img.Logo {
   animation-name: placeHolderShimmer;
   animation-timing-function: linear;
   background: #F6F6F6;
-  background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+  background: var(--DarkLoader);
   background-size: 800px 104px;
   position: relative;
 }
 
+
 /* Search */
 
-.SearchContainer.show{
-  width: 100%;
-  border-radius: 0;
+.SearchContainer{
+    position: relative;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 100%;
+    padding-left: 4px;
+    background: rgb(32, 32, 32);
+    overflow: hidden;
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .Search{
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-   border-color:#cccccc;
-   border-style:solid;
-   border-width:2px;
-   border-radius:50px;
-   text-align:center;
-   padding-left: 4px;
+  flex: 1 1 0px;
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+  text-align: left;
+  background: transparent;
+  color: rgb(255, 255, 255);
 }
 
-.Search:focus { outline:none; } 
-
-.SearchContainer{
-  display: flex;
-  align-items: center;  
-  max-width: fit-content;
-  min-width: 1.4em;
-  width: 0%;
-  overflow: hidden;
-  justify-content: flex-end;
-  transition: .4s;
-  border-radius: 100px;
-}
-
-.SearchContainer svg{
-  padding-left: 4px;
-  cursor: pointer;
-}
-
-svg{
-  font-size: 1.2em;
-  min-width: 1.2em;
+.SearchIcon {
+  color: white;
+  width: 1.5rem;
+  padding: 5px;
+  margin: 0 5px;
 }
 
 /* ABOUT */
 
-.AboutContainer{
+.SpaceHeaderContainer{
   margin-top: var(--HeaderHeight);
+}
+
+.AboutContainer {
+    padding: 0px 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
 }
 
 @keyframes placeHolderShimmer{
@@ -442,23 +699,423 @@ svg{
   100%{ background-color: rgba(165,165,165,0.1); }
 }
 
-@media screen and (max-width: 600px) {
+
+.FadeIn{
+  animation-name: FadeIn;
+  animation-duration: .4s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes FadeIn{
+  0%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 1;
+  }
+}
+
+/* Glow */
+
+.Glow{
+    z-index: 1;
+    filter: blur(30px);
+    border-radius: var(--BorderRadius);
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: Glow;
+    animation-timing-function: linear;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+@keyframes Glow{
+  0%{
+    filter: blur(30px)
+  }
+  50%{
+    filter: blur(8px)
+  }
+  100%{
+    filter: blur(30px)
+  }
+}
+
+/* Main Page */
+.ContentNext {
+  display: flex;
+}
+
+.FiltresList {
+  width: var(--Left);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+  height: calc(100vh - var(--HeaderHeight));
+  overflow: scroll;
+  padding-bottom: var(--Gap);
+  border-right: var(--Border);
+}
+
+
+
+/* Filtres */
+
+.Filtre{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  /* margin-top: 8px; */
+  letter-spacing: 0px;
+  cursor: pointer;
+  width: 90%;
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  transition: .2s;
+  /* overflow: hidden; */
+  /* min-width: 180px; */
+}
+
+
+.Filtre:hover, .Filtre.Focus{
+  background-color: rgb(24, 24, 24);
+}
+.Filtre:hover .Emoji img, .Filtre.Focus .Emoji img, .Filtre:hover .FiltreNb, .Filtre.Focus .FiltreNb{
+  background-color: rgb(89, 48, 229);
+}
+
+
+.Emoji{
+  flex: 20%;
+  margin-right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Emoji img {
+  max-width: 40px;
+  border-radius: 8px;
+  transition: .2s;
+  
+  /* background-color: rgb(89, 48, 229); */
+}
+
+.FiltreName{
+  flex: 60%;
+  text-transform: capitalize;
+}
+
+.FiltreNb{
+  height: 22px;
+  flex: 15%;
+  font-size: 0.8rem;
+  border-radius: 16px;
+  padding: 0px 12px;
+  background: rgb(32, 32, 32);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .2s;
+}
+
+/* Projects */
+
+.ProjectsContainer{
+  padding: 0px 15px;
+}
+
+
+.ProjectWrapper {
+  width: 95%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 35px;
+  grid-row-gap: 35px;
+  margin-bottom: 75px;
+}
+
+.ProjectsContainer h2{
+  padding: 30px 0px 10px 0;
+  margin: 0 2.5%;
+  color: white;
+}
+
+
+.ProjectContainer{
+  touch-action: pan-y;
+}
+
+.ProjectLink{
+  text-decoration: none;
+}
+
+.ProjectImage{
+  font-size: 0px;
+  border-radius: 12px;
+  /* overflow: hidden; */
+  aspect-ratio: 16 / 9;
+}
+
+.ProjectImage video{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 12px;
+}
+
+
+
+.before-after-slider img {
+  aspect-ratio: 16/9;
+  height: auto;
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.before-after-slider {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.before-after-slider__second-photo-container{
+  height: 100%;
+}
+.before-after-drag{
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  width: auto;
+}
+
+img.ImageBefore {
+  width: auto!important;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.ProjectSlide{
+  position: relative!important;
+  width: 100%;
+}
+
+.embla {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.ProjectIcon{
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  background-color: white;
+  border-radius: 100%;
+  margin-right: 15px;
+  overflow: hidden;
+}
+
+.ProjectIcon img{
+  width: 100%;
+}
+
+.ProjectContent{
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.ProjectTexte h3{
+  margin: 0;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.ProjectTexte{
+  display: flex;
+  flex-direction: column;
+}
+
+.ProjectTexte span{
+  font-size: .6rem;
+  color: #aaa;
+}
+
+/* ABOUT */
+
+.MainAbout {
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.InfoUser{
+  color: white;
+  text-align: center;
+  padding: 0 15px 15px 15px;
+  background-color: var(--CardBg);
+  background-color: #14141480;
+  backdrop-filter: blur(30px);
+}
+
+
+.ImageUser {
+  border-radius: 100%;
+  z-index: 1;
+  position: relative;
+  margin-top: -48px;
+}
+
+/* FOR BG MODE ONLY */
+
+.react-parallax-background-children{
+  aspect-ratio: 12 / 6.5;
+  width: 100%;
+
+  object-fit: cover;
+  height: 120%;
+}
+
+/**/
+
+.ParallaxBg {
+  height: 200px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: initial!important;
+}
+
+.Cover{
+  object-fit: cover;
+}
+
+.react-parallax-bgimage{
+  /* top: -100%; */
+  min-height: 220px;
+}
+
+.CardAbout {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 30px;
+  margin: 40px auto;
+  padding: 15px 30px;
+  background-color: var(--CardBg);
+}
+
+.CardAbout h2{
+  min-width: 100%
+}
+
+.Texte{
+  flex: 50%;
+}
+
+.ImageAbout{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  flex: 50%;
+  align-items: center;
+}
+
+.Lightroom .ImageAbout img{
+    grid-column: 1;
+    grid-row: 1;
+    transition: .4s ease;
+}
+
+.Lightroom .ImageAbout:hover .Mockup{
+  transform: translate3d(-8%,-8%,80px);
+}
+
+.Lightroom .ImageAbout:hover .Interface{
+  transform: translate3d(-4%,-4%,40px);
+}
+
+
+.ImageAbout iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  aspect-ratio: 1 / 1;
+}
+
+
+.Small{
+  transition: .4s;
+}
+
+
+/* Wide */
+@media (max-width: 1000px) {
+  .ProjectWrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ProjectWrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .Texte{
+    flex: 100%;
+  }
+
   :root{
-    --HeaderHeight : 150px;
+    --Left: 55px;
   }
 
-  .Header {
-    flex-direction: column;
+  .Small{
+    /* align-items: flex-start; */
+  }
+  
+  .Small .Filtre .FiltreName, .Small .Filtre .FiltreNb  {
+    opacity: 0;
   }
 
-  .Left{
-    order: 2;
+  
+}
+
+@media (max-width: 500px) {
+  .ProjectWrapper {
+    grid-template-columns: repeat(1, 1fr);
   }
+
+  /* .Right.Home{
+    display: none;
+  } */
+
   .Center{
-    order: 1;
+    display: none;
   }
-  .Right{
-    order: 3;
-    justify-content: center;
-  }
+  
 }
