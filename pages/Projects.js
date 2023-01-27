@@ -6,6 +6,7 @@ import 'next-before-after-slider-component/dist/build.css';
 
 import uuid from 'react-uuid';
 import Carousel from './Carousel';
+import Head from 'next/head';
 
 
 export default function Projects({ProjectList}){
@@ -53,7 +54,7 @@ export default function Projects({ProjectList}){
 
         const CarouselImg = Item.Images.map((x => <Image fill sizes="(max-width: 1000px) 33vw, (max-width: 768px) 50vw, 100vw" key={uuid()} className='embla__slide ProjectSlide'  alt={Item.Name} src={x} />))
 
-        const Video = ('Video' in Item) && (<video key={uuid()} muted autoPlay poster={Item.Images[0]} onMouseLeave={HideControl} onMouseOver={HoverVideo}>
+        const Video = ('Video' in Item) && (<video key={uuid()} preload="none" poster={Item.Images[0]} onMouseLeave={HideControl} onMouseOver={HoverVideo}>
             <source src={Item.Video}  type="video/mp4"/>
         </video>)
         
@@ -68,7 +69,7 @@ export default function Projects({ProjectList}){
         return(
             <div key={Proj} className="ProjectContainer" >           
                     <div className="ProjectImage Loader">
-                        <video poster={Item.Poster} onMouseLeave={HideControl} onMouseOver={HoverVideo}>
+                        <video poster={Item.Poster} preload="none" onMouseLeave={HideControl} onMouseOver={HoverVideo}>
                             <source src={Item.Url}  type="video/mp4"/>
                         </video>
                     </div>
@@ -88,6 +89,11 @@ export default function Projects({ProjectList}){
     })
 
     return(
+        <>
+        <Head>
+            <title>Lucas Pires - Mes Projets</title>
+            <meta name="description" content="Découvrez tous mes projets en Modélisation 3D, Web Design ou encore Motion Design !" />
+        </Head>
         <div className="SpaceHeaderContainer ProjectsContainer">
             <h2>Modélisation 3D</h2>
             <div className='ProjectWrapper'>
@@ -102,6 +108,7 @@ export default function Projects({ProjectList}){
                 {ProjectWeb}
             </div>
         </div>
+        </>
     )
 }
 
@@ -109,13 +116,13 @@ export default function Projects({ProjectList}){
 export async function getStaticProps(){
 
     // REST API Projects 
-    const ProjectList = await fetch("https://api.lucasarts.fr/projects/Projects.json").then(response => response.json());
+    const ProjectList = await fetch("https://projects.lucasarts.fr/Projects.json").then(response => response.json());
   
     return {
       props : {
         ProjectList,
       },
-      revalidate: 60,
+       revalidate: 60,
     }
-  }
+}
   

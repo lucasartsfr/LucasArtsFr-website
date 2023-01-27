@@ -13,7 +13,6 @@ export default function Home({GalerieList, FiltresObj}) {
       <Head>
         <title>Lucas Pires - Photographie, Web Design et 3D</title>
         <meta name="description" content="Basé à Clermont-Ferrand, je partage mes photos et mes projets Web ! Passioné par l'Auvergne, je la parcours avec mon A7II et mon drone." />
-        <link rel="icon" href="https://theme.lucasarts.fr/logo.png" />
       </Head>
       
       <div className='ContentNext'>

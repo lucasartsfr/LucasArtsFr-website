@@ -26,6 +26,8 @@ a{
 }
 
 :root{
+ --ThemeColor : #0070f3;  /* rgb(89, 48, 229);  linear-gradient(180deg,#e52983,#8430e3)  linear-gradient(180deg,#8430e3,#e52983)*/
+  --ThemeColorHover : #0042ff;/*rgb(184, 122, 255);*/
   --Gap: 15px;
   --RadiusPhoto: 0px;
   --HeaderHeight: 50px;
@@ -81,7 +83,7 @@ a{
   height: 40px;
   min-width: 40px;
   font-size: 0.9rem;
-  background: rgb(89, 48, 229);
+  background: var(--ThemeColor);
   color: rgb(255, 255, 255);
   display: flex;
   -webkit-box-align: center;
@@ -104,7 +106,7 @@ a{
 }
 
 .ButtonComp:hover {
-  background: rgb(184, 122, 255);
+  background: var(--ThemeColorHover);
   color: rgb(255, 255, 255);
   cursor: pointer;  
   border-radius: 0px;
@@ -183,6 +185,10 @@ a{
 
 .MenuLink a{
   color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
 }
 
 .Header{
@@ -481,12 +487,11 @@ img.Logo {
 
 /* Border Radius must be devide by Scale Item*/
 [data-rmiz-modal-img]{
-  /* border-radius: calc(var(--BorderRadius) * 1.8); */
+  border-radius: calc(var(--BorderRadius) / 0.35);
   transition: 0.6s!important;
 }
 
-.Masonry-Item:hover .Hidden{
- 
+.Masonry-Item:hover .Hidden{ 
  opacity: 1;
 }
 
@@ -792,7 +797,7 @@ img.Logo {
   background-color: rgb(24, 24, 24);
 }
 .Filtre:hover .Emoji img, .Filtre.Focus .Emoji img, .Filtre:hover .FiltreNb, .Filtre.Focus .FiltreNb{
-  background-color: rgb(89, 48, 229);
+  background-color: var(--ThemeColor);
 }
 
 
@@ -809,7 +814,7 @@ img.Logo {
   border-radius: 8px;
   transition: .2s;
   
-  /* background-color: rgb(89, 48, 229); */
+  /* background-color: var(--ThemeColor); */
 }
 
 .FiltreName{
@@ -1037,6 +1042,10 @@ img.ImageBefore {
   flex: 50%;
 }
 
+.Texte b{
+  color: var(--ThemeColor);
+}
+
 .ImageAbout{
   display: grid;
   grid-template-columns: 1fr;
@@ -1065,7 +1074,7 @@ img.ImageBefore {
   height: 100%;
   border: none;
   background: none;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.5 / 1;
 }
 
 

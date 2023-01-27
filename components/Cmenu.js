@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+//import dynamic from 'next/dynamic'
 import {MdPhotoLibrary as Gallery} from "react-icons/md";
 import {FaUserAstronaut as User} from "react-icons/fa";
 import {FaTools as Projects} from "react-icons/fa";
@@ -23,19 +23,20 @@ export default function Cmenu() {
   return (
     <CircleMenu  className="CircularMenu" startAngle={180} rotationAngle={90} itemSize={2}  radius={5} rotationAngleInclusive={true} >   
 
-      <CircleMenuItem tooltip="Galerie" className='MenuLink' data-link='/' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
+      <CircleMenuItem  className='MenuLink' data-link='/' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
         <Link href="/" to="/">
           <Gallery />
         </Link>
       </CircleMenuItem>   
+      
 
-      <CircleMenuItem tooltip="About" className='MenuLink' data-link='/About' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
+      <CircleMenuItem  className='MenuLink' data-link='/About' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
         <Link href="/About"  to="/About">
           <User />
         </Link>
       </CircleMenuItem>
 
-      <CircleMenuItem tooltip="Projects" className='MenuLink' data-link='/Projects' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
+      <CircleMenuItem  className='MenuLink' data-link='/Projects' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
         <Link href="/Projects" to="/Projects">
           <Projects />
         </Link>
