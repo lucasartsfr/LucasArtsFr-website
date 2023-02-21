@@ -62,7 +62,7 @@ function Galerie({List}){
     return(
             width  &&       
             <Masonry
-                breakpointCols={{default:1, 1920: 4, 1100: 3, 700: 2, 500: 1}}
+                breakpointCols={{default:1, 10000: 5, 1920: 4, 1100: 3, 700: 2, 500: 1}}
                 className="Masonry-Grid SpaceHeaderContainer"
                 columnClassName="Masonry-Col">   
                 {Photo}
