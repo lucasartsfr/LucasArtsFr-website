@@ -14,6 +14,7 @@ import Drone from "../public/img/emoji/3d/Drone.png";
 import Nature from "../public/img/emoji/3d/Nature.png";
 import Macro from "../public/img/emoji/3d/Macro.png";
 import Grotte from "../public/img/emoji/3d/Grotte.png";
+import Orage from "../public/img/emoji/3d/Orage.png";
 import Image from "next/image";
 import { useContext } from 'react';
 import { NextContext } from '../pages/_app';
@@ -54,6 +55,7 @@ function FiltresList({Filtres}){
         drone:{ Img : Drone.src, Emj : 0},
         nature:{ Img : Nature.src, Emj : 0},
         grotte:{ Img : Grotte.src, Emj : 0},
+        orage:{ Img : Orage.src, Emj : 0},
     }
 
     // Create Filter Div
@@ -61,7 +63,7 @@ function FiltresList({Filtres}){
         return(
             <div className="Filtre" key={name} id={name} onClick={FilterSort}>
                 <div className="Emoji">
-                    <Image width={40} height={40} src={Emoji[name].Img} alt={name} className="" />
+                    <Image width={40} height={40} src={Emoji[name]?.Img} alt={name} className="" />
                 </div>
                 <div className="FiltreName">{name}</div>
                 <div className="FiltreNb">{Filtres[name]}</div>
