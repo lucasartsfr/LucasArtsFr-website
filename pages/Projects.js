@@ -112,17 +112,30 @@ export default function Projects({ProjectList}){
     )
 }
 
+// ISR
+// export async function getStaticProps(){
 
-export async function getStaticProps(){
+//     // REST API Projects 
+//     const ProjectList = await fetch("https://projects.lucasarts.fr/Projects.json").then(response => response.json());
+  
+//     return {
+//       props : {
+//         ProjectList,
+//       },
+//        revalidate: 60,
+//     }
+// }
 
+export async function getServerSideProps() {
     // REST API Projects 
-    const ProjectList = await fetch("https://projects.lucasarts.fr/Projects.json").then(response => response.json());
+    const ProjectList = await fetch("https://projects.lucasarts.fr/Projects.json")
+      .then((response) => response.json());
   
     return {
-      props : {
+      props: {
         ProjectList,
       },
-       revalidate: 60,
-    }
+    };
 }
+  
   

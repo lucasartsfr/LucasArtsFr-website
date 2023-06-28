@@ -24,28 +24,52 @@ export default function Home({GalerieList, FiltresObj}) {
   )
 }
 
+// ISR
+// export async function getStaticProps(){
+//   // REST API Firebase 
+//   const Filtres = [];
+//   const FiltresObj = {};
+//   const GalerieList = await fetch("https://api.lucasarts.fr/galerie/").then(response => response.json()).then(response => response['photos']);
 
-export async function getStaticProps(){
-  // REST API Firebase 
+
+//   Object.keys(GalerieList).map((x) =>{
+//     GalerieList[x].Filtres.split(',').map((item) =>{
+//       !Filtres.includes(item) && Filtres.push(item) 
+//       FiltresObj[item] = FiltresObj[item] + 1 || 1;
+//     });       
+//   })
+
+
+//   return {
+//     props : {
+//       GalerieList,
+//       Filtres : Filtres,
+//       FiltresObj : FiltresObj
+//     },
+//     revalidate: 60,
+//   }
+// }
+
+export async function getServerSideProps() {
+  // REST API Firebase
   const Filtres = [];
   const FiltresObj = {};
-  const GalerieList = await fetch("https://api.lucasarts.fr/galerie/").then(response => response.json()).then(response => response['photos']);
+  const GalerieList = await fetch("https://api.lucasarts.fr/galerie/")
+    .then((response) => response.json())
+    .then((response) => response['photos']);
 
-
-  Object.keys(GalerieList).map((x) =>{
-    GalerieList[x].Filtres.split(',').map((item) =>{
-      !Filtres.includes(item) && Filtres.push(item) 
+  Object.keys(GalerieList).map((x) => {
+    GalerieList[x].Filtres.split(',').map((item) => {
+      !Filtres.includes(item) && Filtres.push(item);
       FiltresObj[item] = FiltresObj[item] + 1 || 1;
-    });       
-  })
-
+    });
+  });
 
   return {
-    props : {
+    props: {
       GalerieList,
-      Filtres : Filtres,
-      FiltresObj : FiltresObj
+      Filtres: Filtres,
+      FiltresObj: FiltresObj,
     },
-    revalidate: 60,
-  }
+  };
 }

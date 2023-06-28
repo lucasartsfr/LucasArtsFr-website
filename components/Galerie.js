@@ -9,7 +9,6 @@ import { NextContext } from '../pages/_app';
 function Galerie({List}){
 
     const { searchWord, searchFiltre, mobile, width } = useContext(NextContext);
-    console.log(width)
 
 
     //   useEffect(()=>{
