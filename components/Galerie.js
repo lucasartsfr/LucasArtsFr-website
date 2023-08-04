@@ -40,7 +40,7 @@ function Galerie({List}){
             Check && 
             // width={Img.Ratio.Width/Factor} height={Img.Ratio.Height/Factor}
             <div key={id} className="Masonry-Item"> 
-                <Zoom IconZoom="span" classDialog="Dialog" zoomMargin={15} zoomImg={{ priority :Priority, loading:"lazy", src: 'https://cdn.lucasarts.fr/full/'+id+'.jpg', srcSet: 'https://cdn.lucasarts.fr/full/'+id+'.jpg'}}>         
+                <Zoom IconZoom="span" classDialog="Dialog" zoomMargin={15} zoomImg={{ priority :Priority, loading:"lazy", src: 'https://cdn.lucasarts.fr/img/'+id+'.jpg', srcSet: 'https://cdn.lucasarts.fr/img/'+id+'.jpg'}}>         
                     <Image    
                         style={FadeIn}         
                         className="Masonry-Img FadeIn" 
@@ -49,7 +49,7 @@ function Galerie({List}){
                         height={Img.Ratio.Height/Factor} 
                         alt={Img.Nom} 
                         priority={Priority}
-                        src={`https://cdn.lucasarts.fr/full/${id}.jpg`}
+                        src={`https://cdn.lucasarts.fr/img/${id}.jpg`}
                     />                    
                 </Zoom>
                 {Glow}

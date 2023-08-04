@@ -26,7 +26,7 @@ function About(){
                 {/* <Parallax className='ParallaxBg' blur={0} bgImage="https://cdn.lucasarts.fr/full/91.jpg" bgImageAlt="LucasArtsFr Cover" strength={100}/> */}
                 <Parallax strength={100} className="ParallaxBg Loader">
                     <Background >
-                        <Image className='Cover' fill priority src="https://cdn.lucasarts.fr/full/91.jpg" alt="LucasArtsFr Cover" />
+                        <Image className='Cover' fill priority src="https://cdn.lucasarts.fr/img/91.jpg" alt="LucasArtsFr Cover" />
                     </Background>
                 </Parallax>
                     <div className='InfoUser'>
