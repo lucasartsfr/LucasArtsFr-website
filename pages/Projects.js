@@ -113,7 +113,6 @@ export default function Projects({ProjectList}){
     })
 
     // Logo Projects ONYL
-     // Print Project Only
      const ProjectLogo = Object.keys(ProjectList['Logo']).map((Proj) => {
         const Item = ProjectList['Logo'][Proj];
         const CarouselImg = <Image 
@@ -125,6 +124,22 @@ export default function Projects({ProjectList}){
             src={Item.Image} 
             />
         return( <Carousel key={`Logo-${Proj}`}  CarouselImg={CarouselImg} Url={Item.Url} Name={Item.Name} Softwares={Item.Softwares} /> )
+    })
+
+    // Web Project Only
+    const ProjectGraphisme = Object.keys(ProjectList['Graphisme']).map((Proj) => {
+        const Item = ProjectList['Graphisme'][Proj];
+
+        const CarouselImg = Item.Images.map(x => 
+            <Image 
+                fill 
+                sizes="(max-width: 1000px) 33vw, (max-width: 768px) 50vw, 100vw" 
+                key={uuid()} 
+                className='embla__slide ProjectSlide'  
+                alt={Item.Name} src={x} 
+            />)    
+
+        return(  <Carousel key={uuid()} CarouselImg={CarouselImg} Url={Item.Url} Name={Item.Name} Softwares={Item.Softwares} /> )
     })
 
 
@@ -159,6 +174,11 @@ export default function Projects({ProjectList}){
             <h2>Logos</h2>
             <div className='ProjectWrapper'>
                 {ProjectLogo}
+            </div>
+
+            <h2>Graphisme</h2>
+            <div className='ProjectWrapper'>
+                {ProjectGraphisme}
             </div>
 
 
