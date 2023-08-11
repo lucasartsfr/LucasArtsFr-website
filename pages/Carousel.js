@@ -10,7 +10,7 @@ export default function Carousel({Video, CarouselImg, Url, Name, Softwares}){
         <div className="ProjectContainer" >  
                 <div className="embla" ref={emblaRef}>             
                     <div className="ProjectImage Loader embla__container" style={{position: 'relative'}}>
-                        {Video}
+                        {Video && Video}
                         {CarouselImg}
                     </div>
                 </div>

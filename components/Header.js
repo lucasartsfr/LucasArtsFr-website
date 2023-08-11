@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import { useContext } from 'react';
@@ -12,6 +12,7 @@ export default function Header(){
 
     const router = useRouter(); // Get Pages Informations
     const { SearchFunction, setSearchFiltre } = useContext(NextContext);
+    const menuRef = useRef();
 
     const InputSearch = (e) =>{
         SearchFunction(e.target.value);
@@ -34,7 +35,7 @@ export default function Header(){
     return(
         <>
         
-        <Cmenu />     
+        <Cmenu menuRef={menuRef} />     
         
         <nav className="Header">          
             <div className="Left Small">

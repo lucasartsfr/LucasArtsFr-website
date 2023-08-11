@@ -24,9 +24,8 @@ export default function Projects({ProjectList}){
         const Item = ProjectList['3D'][Proj];
         const Before = { imageUrl: Item.Before, alt : Item.Name+" Before" };
         const After = { imageUrl: Item.After, alt : Item.Name+" Before"};
-
         return(
-            <div key={Proj} className="ProjectContainer">               
+            <div key={`3D-${Proj}`} className="ProjectContainer">               
                 <div className="ProjectImage Loader">
                     <ReactBeforeSliderComponent  
                         ComponentBefore={<Image className='ImageAfter' alt={After.alt} draggable={false} width={100} height={300} src={After.imageUrl}/>} 
@@ -52,13 +51,22 @@ export default function Projects({ProjectList}){
     const ProjectWeb = Object.keys(ProjectList['Web']).map((Proj) => {
         const Item = ProjectList['Web'][Proj];
 
-        const CarouselImg = Item.Images.map((x => <Image fill sizes="(max-width: 1000px) 33vw, (max-width: 768px) 50vw, 100vw" key={uuid()} className='embla__slide ProjectSlide'  alt={Item.Name} src={x} />))
+        const CarouselImg = Item.Images.map(x => 
+            <Image 
+                fill 
+                sizes="(max-width: 1000px) 33vw, (max-width: 768px) 50vw, 100vw" 
+                key={uuid()} 
+                className='embla__slide ProjectSlide'  
+                alt={Item.Name} src={x} 
+            />)    
 
-        const Video = ('Video' in Item) && (<video key={uuid()} preload="none" poster={Item.Images[0]} onMouseLeave={HideControl} onMouseOver={HoverVideo}>
-            <source src={Item.Video}  type="video/mp4"/>
-        </video>)
+        const Video = ('Video' in Item) && (
+            <video key={uuid()} preload="none" poster={Item.Images[0]} onMouseLeave={HideControl} onMouseOver={HoverVideo}>
+                <source src={Item.Video}  type="video/mp4"/>
+            </video>
+        )
         
-        return( <Carousel key={uuid()} Video={Video} CarouselImg={CarouselImg} Url={Item.Url} Name={Item.Name} Softwares={Item.Softwares} /> )
+        return(  <Carousel key={uuid()} Video={Video} CarouselImg={CarouselImg} Url={Item.Url} Name={Item.Name} Softwares={Item.Softwares} /> )
     })
 
     // Motion Project Only
@@ -67,7 +75,7 @@ export default function Projects({ProjectList}){
         const Item = ProjectList['Motion'][Proj];
 
         return(
-            <div key={Proj} className="ProjectContainer" >           
+            <div  key={`Motion-${Proj}`} className="ProjectContainer" >           
                     <div className="ProjectImage Loader">
                         <video poster={Item.Poster} preload="none" onMouseLeave={HideControl} onMouseOver={HoverVideo}>
                             <source src={Item.Url}  type="video/mp4"/>
@@ -88,6 +96,38 @@ export default function Projects({ProjectList}){
         )
     })
 
+     // Print Project Only
+     const ProjectPrint = Object.keys(ProjectList['Print']).map((Proj) => {
+        const Item = ProjectList['Print'][Proj];
+        const CarouselImg = Item.Images.map(x => 
+            <Image 
+                fill 
+                sizes="(max-width: 1000px) 33vw, (max-width: 768px) 50vw, 100vw" 
+                key={uuid()} 
+                className='embla__slide ProjectSlide'  
+                alt={Item.Name} 
+                src={x} 
+                />
+            )
+        return( <Carousel key={`Print-${Proj}`}  CarouselImg={CarouselImg} Url={Item.Url} Name={Item.Name} Softwares={Item.Softwares} /> )
+    })
+
+    // Logo Projects ONYL
+     // Print Project Only
+     const ProjectLogo = Object.keys(ProjectList['Logo']).map((Proj) => {
+        const Item = ProjectList['Logo'][Proj];
+        const CarouselImg = <Image 
+            fill 
+            sizes="(max-width: 1000px) 33vw, (max-width: 768px) 50vw, 100vw" 
+            key={uuid()} 
+            className='embla__slide ProjectSlide'  
+            alt={Item.Name} 
+            src={Item.Image} 
+            />
+        return( <Carousel key={`Logo-${Proj}`}  CarouselImg={CarouselImg} Url={Item.Url} Name={Item.Name} Softwares={Item.Softwares} /> )
+    })
+
+
     return(
         <>
         <Head>
@@ -95,18 +135,33 @@ export default function Projects({ProjectList}){
             <meta name="description" content="Découvrez tous mes projets en Modélisation 3D, Web Design ou encore Motion Design !" />
         </Head>
         <div className="SpaceHeaderContainer ProjectsContainer">
+
             <h2>Modélisation 3D</h2>
             <div className='ProjectWrapper'>
                 {Project3D}
-            </div>           
+            </div>         
+
             <h2>Motion Design</h2>
             <div className='ProjectWrapper'>
                 {ProjectMotion}
             </div>
+
             <h2>Web Design</h2>
             <div className='ProjectWrapper'>
                 {ProjectWeb}
             </div>
+
+            <h2>Print</h2>
+            <div className='ProjectWrapper AutoRatio'>
+                {ProjectPrint}
+            </div>
+
+            <h2>Logos</h2>
+            <div className='ProjectWrapper'>
+                {ProjectLogo}
+            </div>
+
+
         </div>
         </>
     )

@@ -847,10 +847,11 @@ img.Logo {
   width: 95%;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 35px;
   grid-row-gap: 35px;
   margin-bottom: 75px;
+  /* grid-auto-rows: 25px; For Masonry */
 }
 
 .ProjectsContainer h2{
@@ -862,6 +863,7 @@ img.Logo {
 
 .ProjectContainer{
   touch-action: pan-y;
+  /* grid-row: span 5;  For Masonry */
 }
 
 .ProjectLink{
@@ -873,6 +875,10 @@ img.Logo {
   border-radius: 12px;
   /* overflow: hidden; */
   aspect-ratio: 16 / 9;
+}
+
+.AutoRatio .ProjectImage{
+  aspect-ratio: auto;
 }
 
 .ProjectImage video{
@@ -1084,7 +1090,13 @@ img.ImageBefore {
 
 
 /* Wide */
-@media (max-width: 1000px) {
+@media (max-width: 1600px) {
+  .ProjectWrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1300px) {
   .ProjectWrapper {
     grid-template-columns: repeat(3, 1fr);
   }
