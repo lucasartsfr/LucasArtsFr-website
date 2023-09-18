@@ -218,7 +218,7 @@ export default function Projects({ProjectList}){
                 (filtre == 'Print' || filtre == '') && 
                     <>
                         <h2>Print</h2>
-                        <div className='ProjectWrapper'>
+                        <div className='ProjectWrapper AutoRatio'>
                             {ProjectPrint}
                         </div>   
                     </>                
