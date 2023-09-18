@@ -30,7 +30,7 @@ function Galerie({List}){
         const Check = (searchFiltre) ? List[id].Filtres.toLowerCase().includes(searchWord) : searchWord == "" || List[id].Nom.toLowerCase().includes(searchWord) || List[id].Filtres.toLowerCase().includes(searchWord) || List[id].Localisation.Pays.toLowerCase().includes(searchWord) || List[id].Localisation.Departement.toLowerCase().includes(searchWord) || 
                       List[id].Localisation.Region.toLowerCase().includes(searchWord) || List[id].Localisation.Ville.toLowerCase().includes(searchWord) || List[id].Parametres.Ouverture.toLowerCase().includes(searchWord) || List[id].Parametres.ISO.toLowerCase().includes(searchWord) || List[id].Parametres.Shutter.toLowerCase().includes(searchWord) || List[id].Parametres.Focale.toLowerCase().includes(searchWord);
         // Set LCP Priority
-        const Priority = (id == "142") ? true : false;  
+        const Priority = (id == "142" || id == "158") ? true : false;  
         // FadeInAnimation (With Individual Index to Allo Fast Animation on filter)
         const FadeIn = Check && {animationDelay: `${RealId++*80}ms`, opacity: 0};
         // Add Glow to Desktop

@@ -8,8 +8,10 @@ import {MdPhotoLibrary as Gallery} from "react-icons/md";
 import {FaUserAstronaut as User} from "react-icons/fa";
 import {FaTools as Projects} from "react-icons/fa";
 
+import {MdOutlineLightMode as Light} from "react-icons/md";
 
-function Social({Url, Icon, Color}){
+
+function Social({Url, Icon, Color, click}){
 
     const IconList = {
         Github : {
@@ -44,14 +46,19 @@ function Social({Url, Icon, Color}){
             Node : <Projects />,
             Color : "#0077b580"
         },
+        Light : {
+            Node : <Light />,
+            Color : "#6e6e6e"
+        },
     }
 
+    const Action = () =>{ click();}
 
     const handleOver = (e) =>{ document.documentElement.style.setProperty('--HoverSocial', e.currentTarget.getAttribute('data-color')); }
-
+    console.log(click)
     return(
         <>
-            <a className="RSIcon" data-color={IconList[Icon].Color} onMouseOver={handleOver} href={Url} aria-label={Icon} rel="noreferrer" target="_blank">
+            <a onClick={Action} className="RSIcon" data-color={IconList[Icon].Color} onMouseOver={handleOver} href={Url} aria-label={Icon} rel="noreferrer" target="_blank">
                 {IconList[Icon].Node}
             </a>
         </>

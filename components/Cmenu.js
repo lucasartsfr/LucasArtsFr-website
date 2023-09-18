@@ -25,15 +25,15 @@ const Cmenu = () => {
   return (
     <CircleMenu open={true} className="CircularMenu" startAngle={180} rotationAngle={90} itemSize={2} radius={5} rotationAngleInclusive={true} >   
 
-      <CircleMenuItem  className='MenuLink' data-link='/' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
-        <Link href="/" to="/">
+      <CircleMenuItem  className='MenuLink' data-link='/Photos' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
+        <Link href="/Photos" to="/Photos">
           <Gallery />
         </Link>
       </CircleMenuItem>   
       
 
-      <CircleMenuItem  className='MenuLink' data-link='/About' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
-        <Link href="/About"  to="/About">
+      <CircleMenuItem  className='MenuLink' data-link='/' tooltipPlacement={TooltipPlacement.Left} onClick={Redirect}>      
+        <Link href="/"  to="/">
           <User />
         </Link>
       </CircleMenuItem>

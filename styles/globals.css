@@ -1,16 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins',-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto;
-  scroll-behavior: smooth;
-  scroll-padding: 0;
-  scrollbar-width: none!important;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  color-scheme: light;
-  -webkit-tap-highlight-color: transparent;
-}
 
 html,
 body {
@@ -26,7 +15,7 @@ a{
 }
 
 :root{
- --ThemeColor : #0070f3;  /* rgb(89, 48, 229);  linear-gradient(180deg,#e52983,#8430e3)  linear-gradient(180deg,#8430e3,#e52983)*/
+  --ThemeColor : #0070f3;  /* rgb(89, 48, 229);  linear-gradient(180deg,#e52983,#8430e3)  linear-gradient(180deg,#8430e3,#e52983)*/
   --ThemeColorHover : #0042ff;/*rgb(184, 122, 255);*/
   --Gap: 15px;
   --RadiusPhoto: 0px;
@@ -39,10 +28,12 @@ a{
   --BorderRadius: 12px;
   --Border: 1px solid rgba(255, 255, 255, .1);
   --Left : 250px;
-  --CardBg : #141414;
+  --CardBg : rgba(20,20,20,.5);
+  --CardLighter : rgba(32,32,32,1);
   --HoverSocial : white;
-  --LightLoader :   linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
-  --DarkLoader :   linear-gradient(to right, #141414 8%, #1d1d1d 18%, #141414 33%);
+  --Loader :   linear-gradient(to right, rgba(20,20,20) 8%, #1d1d1d 18%, rgba(20,20,20) 33%,1);  
+  --Overlay : rgba(0,0,0,0.8);
+  --Transition : .4s;
 
   /* Circle Menu */
   --CMBorderColor : 0rem solid #000000;
@@ -58,6 +49,65 @@ a{
   --CMBurgerActiveBg : #ffffff;
 }
 
+
+[data-light]{
+   --ThemeColor : #0070f3;  /* rgb(89, 48, 229);  linear-gradient(180deg,#e52983,#8430e3)  linear-gradient(180deg,#8430e3,#e52983)*/
+   --ThemeColorHover : #0042ff;/*rgb(184, 122, 255);*/
+   --Gap: 15px;
+   --RadiusPhoto: 0px;
+   --HeaderHeight: 50px;
+   --BG : #ffffff;
+   --Filter : invert(0);
+   --Text : #212121;
+   --TextButton : #ffffff;
+   --MainColor : #2b87e2;
+   --LineHeight : 2em;
+   --BorderRadius: 12px;
+   --Border: 1px solid rgba(0, 0, 0, .1);
+   --Left : 250px;
+   --CardBg : rgba(232,232,232,.5);
+   --CardLighter : rgba(240,240,240,1);
+   --HoverSocial : white;  
+   --Loader :   linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+   --Overlay : rgba(255,255,255,0.8);
+   --Transition : .4s;
+ 
+   /* Circle Menu */
+   --CMBorderColor : 0rem solid #ffffff;
+  --CMBackgroundColor : #0e0e0e;
+  --CMTextColor : #ffffff;
+  --CMRadius : 50%;
+  --CMPadding : 0.5rem;
+  --CMTransition : ease 0.4s;
+  --CMTexteActiveColor : #0e0e0e;
+  --CMBackgroundActiveColor : #ffffff;
+  --CMBurgerBg : #f0f0f0;
+  --CMBurgerRadius : 1em;
+  --CMBurgerActiveBg : #0e0e0e;
+ }
+
+ * {
+  box-sizing: border-box;
+  font-family: 'Poppins',-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto;
+  scroll-behavior: smooth;
+  scroll-padding: 0;
+  scrollbar-width: none!important;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
+}
+
+hr{
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {  
+  color: var(--Text);
+}
+
 ::selection {
   background: none;
 }
@@ -69,7 +119,7 @@ a{
 }
 
 [data-rmiz-modal-overlay="visible"]{
-  background-color: rgba(0, 0, 0, .8)!important;
+  background-color: var(--Overlay)!important;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
@@ -97,8 +147,14 @@ a{
   max-width: 100%;
   transition: 0.2s ease 0s, color 0.2s ease 0s;
   text-decoration: none;
-  margin: 0px 5px;
+  margin: 5px 10px 0 0;
   width: fit-content;
+  line-height: 0;
+}
+
+
+.IconBtn{
+  color: var(--TextButton);
 }
 
 .ButtonComp svg {
@@ -109,7 +165,22 @@ a{
   background: var(--ThemeColorHover);
   color: rgb(255, 255, 255);
   cursor: pointer;  
-  border-radius: 0px;
+  /* border-radius: 0px; */
+}
+
+.Secondary-btn{
+  background-color: transparent!important;
+  border: 2px solid var(--ThemeColor) ;
+  color: var(--ThemeColor);
+}
+
+.Secondary-btn .IconBtn{
+  color: var(--ThemeColor);
+}
+
+.Secondary-btn:hover {
+  border: 2px solid var(--ThemeColorHover) ;
+  color: var(--ThemeColorHover);
 }
 
 @media (prefers-color-scheme: light) {
@@ -228,7 +299,6 @@ a{
 }
 
 .LeftContent h2{
-  color: white;
   margin: 0;
 }
 
@@ -391,7 +461,7 @@ img.Logo {
 
 .RSIcon svg{
   background: none;
-  color: rgb(255, 255, 255);
+  color: var(--Text);
   font-size: 2rem;
   border-radius: 999px;
   border: none;
@@ -404,8 +474,8 @@ img.Logo {
 }
 
 .RSIcon svg:hover{
-  /* background: rgb(32, 32, 32); */
-  color: rgb(255, 255, 255);
+  /* background: var(--CardLighter); */
+  color: var(--Text);
   cursor: pointer;
 }
 
@@ -449,7 +519,7 @@ img.Logo {
   margin: auto;
   height: calc(100vh - var(--HeaderHeight));
   overflow: scroll;
-  background-color: #0e0e0e;
+  background-color: var(--BG);
 }
 
 .Masonry-Col{
@@ -480,11 +550,13 @@ img.Logo {
   transition: var(--Transition);
   vertical-align: bottom;
   border-radius: var(--BorderRadius);
-  /* animation: Loader 1s infinite ease-in-out;
-  -webkit-animation: Loader 1s infinite ease-in-out; */
-  /*box-shadow: 10px 15px 20px 0px rgb(0 0 0 / 12%);*/
 }
 
+@keyframes scale{
+  0%{
+      scale: 0;
+  }
+}
 /* Border Radius must be devide by Scale Item*/
 [data-rmiz-modal-img]{
   border-radius: calc(var(--BorderRadius) / 0.35);
@@ -609,7 +681,7 @@ img.Logo {
   animation-name: placeHolderShimmer;
   animation-timing-function: linear;
   background: #F6F6F6;
-  background: var(--DarkLoader);
+  background: var(--Loader);
   background-size: 800px 104px;
 }
 
@@ -620,7 +692,7 @@ img.Logo {
   animation-name: placeHolderShimmer;
   animation-timing-function: linear;
   background: #F6F6F6;
-  background: var(--DarkLoader);
+  background: var(--Loader);
   background-size: 800px 104px;
   position: relative;
 }
@@ -635,7 +707,7 @@ img.Logo {
     align-items: center;
     height: 100%;
     padding-left: 4px;
-    background: rgb(32, 32, 32);
+    background: var(--CardLighter);
     overflow: hidden;
     width: 100%;
     justify-content: flex-start;
@@ -650,17 +722,24 @@ img.Logo {
   outline: none;
   text-align: left;
   background: transparent;
-  color: rgb(255, 255, 255);
+  color: var(--Text);
 }
 
 .SearchIcon {
-  color: white;
+  color: var(--Text);
   width: 1.5rem;
   padding: 5px;
   margin: 0 5px;
 }
 
 /* ABOUT */
+
+.CVButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 .SpaceHeaderContainer{
   margin-top: var(--HeaderHeight);
@@ -692,17 +771,7 @@ img.Logo {
   }
 }
 
-@keyframes Loader {
-  0%{ background-color: rgba(165,165,165,0.1); }
-  50%{ background-color: rgba(165,165,165,0.3); }
-  100%{ background-color: rgba(165,165,165,0.1); }
-}
 
-@-webkit-keyframes Loader {
-  0%{ background-color: rgba(165,165,165,0.1); }
-  50%{ background-color: rgba(165,165,165,0.3); }
-  100%{ background-color: rgba(165,165,165,0.1); }
-}
 
 
 .FadeIn{
@@ -787,16 +856,18 @@ img.Logo {
   width: 90%;
   color: rgb(255, 255, 255);
   padding: 5px;
-  transition: .2s;
+  transition: var(--Transition);
+  margin-top: 4px;
   /* overflow: hidden; */
   /* min-width: 180px; */
 }
 
-
 .Filtre:hover, .Filtre.Focus{
-  background-color: rgb(24, 24, 24);
+  background-color: var(--CardLighter);
+  transition: var(--Transition);
 }
 .Filtre:hover .Emoji img, .Filtre.Focus .Emoji img, .Filtre:hover .FiltreNb, .Filtre.Focus .FiltreNb{
+  transition: var(--Transition);
   background-color: var(--ThemeColor);
 }
 
@@ -820,6 +891,7 @@ img.Logo {
 .FiltreName{
   flex: 60%;
   text-transform: capitalize;
+  color: var(--Text);
 }
 
 .FiltreNb{
@@ -828,8 +900,8 @@ img.Logo {
   font-size: 0.8rem;
   border-radius: 16px;
   padding: 0px 12px;
-  background: rgb(32, 32, 32);
-  color: white;
+  background: var(--CardLighter);
+  color: var(--Text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -837,6 +909,43 @@ img.Logo {
 }
 
 /* Projects */
+
+.FiltreProjectContainer{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 95%;
+  margin: auto;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+.FiltreProject{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--CardLighter);
+  color: var(--Text);
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+.FiltreProject:hover, .isFiltered{
+  color: var(--CardBg);
+  background-color: var(--Text);
+  cursor: pointer;
+}
+
+.Chip{
+  margin-left: 8px;
+}
+
+.Chip path{
+  pointer-events: none;
+}
 
 .ProjectsContainer{
   padding: 0px 15px;
@@ -857,7 +966,6 @@ img.Logo {
 .ProjectsContainer h2{
   padding: 30px 0px 10px 0;
   margin: 0 2.5%;
-  color: white;
 }
 
 
@@ -988,7 +1096,6 @@ img.ImageBefore {
   text-align: center;
   padding: 0 15px 15px 15px;
   background-color: var(--CardBg);
-  background-color: #14141480;
   backdrop-filter: blur(30px);
 }
 
@@ -1049,7 +1156,7 @@ img.ImageBefore {
   flex: 50%;
 }
 
-.Texte b{
+ b{
   color: var(--ThemeColor);
 }
 
@@ -1059,6 +1166,21 @@ img.ImageBefore {
   grid-template-rows: 1fr;
   flex: 50%;
   align-items: center;
+}
+
+.Tilt {
+  width: 100%;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.Print {
+  color: transparent;
+  aspect-ratio: 515/725;
+  height: auto;
+  z-index: 1;
+  width: 45%;
+  border-radius: 8px;
 }
 
 .Lightroom .ImageAbout img{

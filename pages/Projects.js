@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 import ReactBeforeSliderComponent from 'next-before-after-slider-component';
@@ -8,8 +8,12 @@ import uuid from 'react-uuid';
 import Carousel from './Carousel';
 import Head from 'next/head';
 
+import {AiFillCloseCircle as Close} from "react-icons/ai"
+
 
 export default function Projects({ProjectList}){
+
+    const [filtre, setFiltre] = useState('');
 
     const HoverVideo = (e) =>{
         e.currentTarget.toggleAttribute('controls')
@@ -17,6 +21,29 @@ export default function Projects({ProjectList}){
     const HideControl = (e) =>{
         e.currentTarget.toggleAttribute('controls')
     }
+    const RemoveFilter = () =>{
+        setFiltre('no')
+    }
+    // Filtres Projects
+    const FilterProjects = (e) =>{
+        if(e.target.id.includes('Close')){
+            setFiltre('')            
+        }
+        else{
+            setFiltre(e.currentTarget.id);
+        }
+        
+    }
+
+    // Filtres
+    const FiltresClick = Object.keys(ProjectList).map(flt =>{
+        return <a key={flt} id={flt} className={`FiltreProject ${filtre === flt && 'isFiltered'}`} onClick={(e) => FilterProjects(e)}>
+                    <span>{flt}</span>
+                    {   
+                        (filtre === flt) && <Close className='Chip' id={`Close-${flt}`} />
+                    }
+                </a>
+    })
 
     // 3D Projects ONYL
     const Project3D = Object.keys(ProjectList['3D']).map((Proj) => {
@@ -151,35 +178,71 @@ export default function Projects({ProjectList}){
         </Head>
         <div className="SpaceHeaderContainer ProjectsContainer">
 
-            <h2>Modélisation 3D</h2>
-            <div className='ProjectWrapper'>
-                {Project3D}
-            </div>         
-
-            <h2>Motion Design</h2>
-            <div className='ProjectWrapper'>
-                {ProjectMotion}
+            
+            <div className='FiltreProjectContainer'>
+                {FiltresClick}
             </div>
 
-            <h2>Web Design</h2>
-            <div className='ProjectWrapper'>
-                {ProjectWeb}
-            </div>
+            {
+                (filtre == '3D' || filtre == '') && 
+                    <>
+                        <h2>Modélisation 3D</h2>
+                        <div className='ProjectWrapper'>
+                            {Project3D}
+                        </div>   
+                    </>                
+            }
+                  
+                  
+            {
+                (filtre == 'Motion' || filtre == '') && 
+                    <>
+                        <h2>Motion Design</h2>
+                        <div className='ProjectWrapper'>
+                            {ProjectMotion}
+                        </div>   
+                    </>                
+            }
 
-            <h2>Print</h2>
-            <div className='ProjectWrapper AutoRatio'>
-                {ProjectPrint}
-            </div>
+            {
+                (filtre == 'Web' || filtre == '') && 
+                    <>
+                        <h2>Web Design</h2>
+                        <div className='ProjectWrapper'>
+                            {ProjectWeb}
+                        </div>   
+                    </>                
+            }
 
-            <h2>Logos</h2>
-            <div className='ProjectWrapper'>
-                {ProjectLogo}
-            </div>
+            {
+                (filtre == 'Print' || filtre == '') && 
+                    <>
+                        <h2>Print</h2>
+                        <div className='ProjectWrapper'>
+                            {ProjectPrint}
+                        </div>   
+                    </>                
+            }
 
-            <h2>Graphisme</h2>
-            <div className='ProjectWrapper'>
-                {ProjectGraphisme}
-            </div>
+            {
+                (filtre == 'Logo' || filtre == '') && 
+                    <>
+                        <h2>Logos</h2>
+                        <div className='ProjectWrapper'>
+                            {ProjectLogo}
+                        </div>   
+                    </>                
+            }
+
+            {
+                (filtre == 'Graphisme' || filtre == '') && 
+                    <>
+                        <h2>Graphisme</h2>
+                        <div className='ProjectWrapper'>
+                            {ProjectGraphisme}
+                        </div>   
+                    </>                
+            }
 
 
         </div>

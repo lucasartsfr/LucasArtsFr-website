@@ -19,6 +19,11 @@ export default function Header(){
         setSearchFiltre(false);
     }
 
+    const ToggleDarkMode = () =>{
+        const Theme = document.querySelector('html');
+        console.log(Theme.toggleAttribute('data-light'))
+    }
+
     // useEffect((e)=>{
 
     //     const handleScroll = (e) => {
@@ -52,7 +57,7 @@ export default function Header(){
             </div>
            
             {                
-            router.pathname == "/" && 
+            router.pathname == "/Photos" && 
             <div className="Center">
                 
                 <div className="SearchContainer">
@@ -67,6 +72,8 @@ export default function Header(){
                 <Social Url="https://dribbble.com/LucasArtsFr" Icon="Dribbble"/>
                 <Social Url="https://www.linkedin.com/in/lucasarts" Icon="Linkedin"/>
                 <Social Url="https://instagram.com/lucasartsfr" Icon="Instagram"/>
+                <hr></hr>
+                <Social click={ToggleDarkMode} Icon="Light"/>
             </div>
 
         </nav>
