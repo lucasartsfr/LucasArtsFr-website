@@ -7,6 +7,7 @@ import { NextContext } from '../pages/_app';
 import Buttons from "./Buttons";
 import Social from "./Social";
 import Cmenu from "./Cmenu";
+import {MdOutlineLightMode as Light} from "react-icons/md";
 
 export default function Header(){    
 
@@ -22,6 +23,11 @@ export default function Header(){
     const ToggleDarkMode = () =>{
         const Theme = document.querySelector('html');
         console.log(Theme.toggleAttribute('data-light'))
+    }
+
+    const UpdateTheme = (e) =>{
+        console.log()
+        document.documentElement.style.setProperty('--ThemeColor', e.currentTarget.value);
     }
 
     // useEffect((e)=>{
@@ -73,7 +79,12 @@ export default function Header(){
                 <Social Url="https://www.linkedin.com/in/lucasarts" Icon="Linkedin"/>
                 <Social Url="https://instagram.com/lucasartsfr" Icon="Instagram"/>
                 <hr></hr>
-                <Social click={ToggleDarkMode} Icon="Light"/>
+                <div className="ColorGeneratorContainer">
+                    <input type="color" className="ColorGenerator"  defaultValue="#0070f3" onChange={UpdateTheme}/>
+                </div>
+                <a onClick={ToggleDarkMode} className="RSIcon DarkMode" data-color="#6e6e6e" aria-label="Light Mode" rel="noreferrer" target="_blank">
+                    <Light />
+                </a>
             </div>
 
         </nav>

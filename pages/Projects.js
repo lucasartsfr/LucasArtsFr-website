@@ -93,7 +93,7 @@ export default function Projects({ProjectList}){
             </video>
         )
         
-        return(  <Carousel key={uuid()} Video={Video} CarouselImg={CarouselImg} Url={Item.Url} Name={Item.Name} Softwares={Item.Softwares} /> )
+        return(  <Carousel App={true} key={uuid()} Video={Video} CarouselImg={CarouselImg} Url={Item.Url} Name={Item.Name} Softwares={Item.Softwares} /> )
     })
 
     // Motion Project Only
@@ -178,15 +178,25 @@ export default function Projects({ProjectList}){
         </Head>
         <div className="SpaceHeaderContainer ProjectsContainer">
 
-            
+            <h4 id='Filtres'>Trier par</h4>
             <div className='FiltreProjectContainer'>
                 {FiltresClick}
             </div>
 
             {
+                (filtre == 'Web' || filtre == '') && 
+                    <>
+                        <h2 id='Web'>UI & UX Design</h2>
+                        <div className='ProjectWrapper'>
+                            {ProjectWeb}
+                        </div>   
+                    </>                
+            }
+
+            {
                 (filtre == '3D' || filtre == '') && 
                     <>
-                        <h2>Modélisation 3D</h2>
+                        <h2 id='Modélisation'>Modélisation 3D</h2>
                         <div className='ProjectWrapper'>
                             {Project3D}
                         </div>   
@@ -197,27 +207,18 @@ export default function Projects({ProjectList}){
             {
                 (filtre == 'Motion' || filtre == '') && 
                     <>
-                        <h2>Motion Design</h2>
+                        <h2 id='Motion'>Motion Design</h2>
                         <div className='ProjectWrapper'>
                             {ProjectMotion}
                         </div>   
                     </>                
             }
-
-            {
-                (filtre == 'Web' || filtre == '') && 
-                    <>
-                        <h2>Web Design</h2>
-                        <div className='ProjectWrapper'>
-                            {ProjectWeb}
-                        </div>   
-                    </>                
-            }
+            
 
             {
                 (filtre == 'Print' || filtre == '') && 
                     <>
-                        <h2>Print</h2>
+                        <h2 id='Print'>Print</h2>
                         <div className='ProjectWrapper AutoRatio'>
                             {ProjectPrint}
                         </div>   
@@ -227,7 +228,7 @@ export default function Projects({ProjectList}){
             {
                 (filtre == 'Logo' || filtre == '') && 
                     <>
-                        <h2>Logos</h2>
+                        <h2 id='Logos'>Logos</h2>
                         <div className='ProjectWrapper'>
                             {ProjectLogo}
                         </div>   
@@ -237,7 +238,7 @@ export default function Projects({ProjectList}){
             {
                 (filtre == 'Graphisme' || filtre == '') && 
                     <>
-                        <h2>Graphisme</h2>
+                        <h2 id='Graphisme'>Graphisme</h2>
                         <div className='ProjectWrapper'>
                             {ProjectGraphisme}
                         </div>   

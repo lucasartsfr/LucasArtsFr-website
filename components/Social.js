@@ -52,13 +52,12 @@ function Social({Url, Icon, Color, click}){
         },
     }
 
-    const Action = () =>{ click();}
 
     const handleOver = (e) =>{ document.documentElement.style.setProperty('--HoverSocial', e.currentTarget.getAttribute('data-color')); }
-    console.log(click)
+  
     return(
         <>
-            <a onClick={Action} className="RSIcon" data-color={IconList[Icon].Color} onMouseOver={handleOver} href={Url} aria-label={Icon} rel="noreferrer" target="_blank">
+            <a className="RSIcon" data-color={IconList[Icon].Color} onMouseOver={handleOver} href={Url} aria-label={Icon} rel="noreferrer" target="_blank">
                 {IconList[Icon].Node}
             </a>
         </>

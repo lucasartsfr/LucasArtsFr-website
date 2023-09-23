@@ -34,9 +34,10 @@ function About(){
                     <div className='InfoUser'>
                         <Image className='ImageUser Loader' alt='Lucas Pires' width={96} height={96} src="https://theme.lucasarts.fr/user.jpg" />
                         
-                        <h1>Lucas Pires.</h1>
-                        <h2>Communication, Web & 3D.</h2>
-                        <p>Passionné de <b>Photographie</b>, de <b>Web et de 3D</b>, vous retrouverez toutes mes réalisations sur ce Site. <br />Développé avec NextJS, il s'agit, au delà d'un projet personnel, d'une ambition d'en apprendre toujours plus avec le développement Web.</p>
+                        <h1>Lucas Pires</h1>
+                        <h2>UI et UX Designer</h2>
+                        <p>Passionné de <b>Photographie</b>, <b>UI & d'UX</b>, vous retrouverez toutes mes réalisations sur ce portfolio.</p>
+                        <p>Développé avec NextJS, il s'agit, au delà d'un simple portfolio, <br></br>d'une ambition d'en apprendre toujours plus avec le développement Web et la création d'interface.</p>
                         <div className='CVButtons'>
                             <Buttons target="_blank" Icon="PDF" Url="http://cv.lucasarts.fr/CV.pdf" Name="Voir le CV Papier"/>
                             <Buttons target="_blank" Icon="Camera" Url="http://cv.lucasarts.fr/CVideo.mp4" Name="Voir le CV Vidéo" className="Secondary-btn"/>
@@ -44,7 +45,22 @@ function About(){
                     </div>                    
                 </div>
 
-                
+                <div className='CardAbout WebDesign'>
+                    <h2>UI et UX Design</h2>
+                    <div className='Texte'>
+                        <p>C'est lors de mon <b>DUT</b> que j'ai découvert l'<b>UI/UX Design</b> et tout ce qui l'entoure. Passionné de physique et de science, j'aime comprendre le monde qui nous entoure. Cette curiosité naturelle m'a poussé à approfondir mes connaissances en UX Design pour comprendre les personas, et créer des interfaces fluides, rassurantes et intuitives.</p>
+                                             
+                        <p>J'utilise de nombreux outils pour analyser les habitudes et les besoins des clients. Heatmaps, Clickmap, Scrollmap, Google Analytics (Event tracking, Audience, Bounce Rate...), Sondage, Funnels ou encore de l'A/B Testing.</p> 
+                        
+                        <p>Pour l'UI et la création d'éléments graphiques, j'ai appris à travailler sur de nombreux outils, comme la suite Adobe et Figma. Mais pour aller encore plus loin et comprendre au mieux les problématiques, j'ai également appris le développement Web et mobile, aussi bien Front que Back (ReactJs, React Native, NodeJs, Php, CSS...).</p>
+                        
+                        <p>L'intégration d'éléments repose également sur la communication avec les développeurs, mais aussi le temps qu'ils ont à disposition pour le faire. En ayant conscience du temps que peut prendre la création de ces éléments en développement web et mobile, j'ai une vision plus globale du projet et peux apporter des solutions optimisées et viables.</p>
+                        <Buttons Icon="Atom" Url="/Projects" Name="Voir les projets Web"/>
+                    </div>
+                    <div className='ImageAbout'>    
+                        <Image src={WebDesign} className="WebDesign" alt="Interface de Lightroom" style={{ width: '100%', height: 'auto', zIndex: 1 }}/>    
+                    </div>   
+                </div>
 
                 <div className='CardAbout Lightroom'>
                     <h2>Photographie</h2>
@@ -81,20 +97,7 @@ function About(){
                     </div>   
                 </div> 
             
-                <div className='CardAbout WebDesign'>
-                    <h2>Web Design</h2>
-                    <div className='Texte'>
-                        <p>C'est lors de mon <b>DUT</b> que j'ai découvert le<b>Web Design</b> et tout ce qui l'entoure. Mais c'est après mes études que je me suis pleinement investi dans le Web et plus particulièrement en code (<b>JavaScript, ReactJs, NextJs, Php...</b>). </p>
-                        
-                        <p>J'ai découvert toutes les possibilités que le monde du web offrait ! Chaque projet personnel prenait alors une place importante dans mon processus de formation, et ce site en fait partie.</p> 
-                        
-                        <p>Je voulais un site épuré, mais moderne et <b>optimisé pour le SEO</b>. Il a donc été développé avec <b>NextJS</b> et est déployé sur <b>Vercel</b>. Vous pouvez découvrir le résultat de mes autres travaux dans l'onglet <b>projets</b>.</p>
-                        <Buttons Icon="Atom" Url="/Projects" Name="Voir les projets Web"/>
-                    </div>
-                    <div className='ImageAbout'>    
-                        <Image src={WebDesign} className="WebDesign" alt="Interface de Lightroom" style={{ width: '100%', height: 'auto', zIndex: 1 }}/>    
-                    </div>   
-                </div>
+                
                 
 
                 <div className='CardAbout Modelisation'>
@@ -102,9 +105,9 @@ function About(){
                     <div className='Texte'>
                         <p>J'ai découvert la <b>modélisation 3D</b> sur Cinéma 4D avec mes premiers tutoriels YouTube. Mais c'est lors de ma deuxième année d'étude de DUT MMI que j'ai commencé de vraies formations pour créer des objets toujours plus poussés : Voitures, Robots, Sabre Laser...</p>
                         
-                        <p> Lors de ma 3 ème année, en <b>Licence TAIS</b>, j'ai également appris à travailler sur un autre logiciel de modélisation 3D : <b>3DS Max</b>. Bien que puissant et très utilisés dans l'industrie, je n'ai pas souhaité continuer à travailler dessus. J'ai préféré m'orienter vers un autre logiciel très connu, qui est surtout Open Source et Gratuit.</p>
+                        <p> Lors de ma 3 ème année, en <b>Licence TAIS</b>, j'ai également appris à travailler sur un autre logiciel de modélisation 3D : <b>3DS Max</b>. Bien que puissant et très utilisé dans l'industrie, je n'ai pas souhaité continuer à travailler dessus. J'ai préféré m'orienter vers un autre logiciel très connu, qui est surtout Open Source et Gratuit avec une grande communauté de créateurs.</p>
                         
-                        <p>Depuis plus d'un an maintenant, je me suis donc formé sur le logiciel de modélisation 3D <b>Blender</b>. Il s'est naturellement présenté à moi grâce aux nombreuses formations présentes sur le Web. Pour toutes mes réalisations 3D, j'utilise désormais BLENDER, et impossible de m'en passer !</p>
+                        <p>Depuis plus de deux ans maintenant, je me suis donc formé sur le logiciel de modélisation 3D <b>Blender</b>. Il s'est naturellement présenté à moi grâce aux nombreuses formations présentes sur le Web. Pour toutes mes réalisations 3D, j'utilise désormais BLENDER, et impossible de m'en passer !</p>
                         <Buttons Icon="Three" Url="/Projects" Name="Voir les modélisations 3D"/>
                     </div>
                     <div className='ImageAbout'> 

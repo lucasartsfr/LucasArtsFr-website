@@ -1,15 +1,24 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
+import {IoMdOpen as Open} from "react-icons/io";
 
-export default function Carousel({Video, CarouselImg, Url, Name, Softwares}){
+export default function Carousel({Video, CarouselImg, Url, Name, Softwares, App}){
 
     const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({delay: (Math.floor(Math.random() * 4000) + 3000)})]);
 
     return(
-        <div className="ProjectContainer" >  
-                <div className="embla" ref={emblaRef}>             
-                    <div className="ProjectImage Loader embla__container" style={{position: 'relative'}}>
+        <div className="ProjectContainer" > 
+            {   App &&
+                <a className='ProjectLink' target="_blank" rel="noreferrer" href={Url}>
+                    <div className='OpenIconContainer'>
+                    <Open className='OpenIcon' />
+                    </div> 
+                </a>
+            }
+               
+                <div className="embla" ref={emblaRef}>      
+                    <div className="ProjectImage Loader embla__container" style={{position: 'relative'}}>                        
                         {Video && Video}
                         {CarouselImg}
                     </div>
