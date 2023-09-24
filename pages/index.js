@@ -39,8 +39,8 @@ function About(){
                         <p>Passionné de <b>Photographie</b>, <b>UI & d'UX</b>, vous retrouverez toutes mes réalisations sur ce portfolio.</p>
                         <p>Développé avec NextJS, il s'agit, au delà d'un simple portfolio, <br></br>d'une ambition d'en apprendre toujours plus avec le développement Web et la création d'interface.</p>
                         <div className='CVButtons'>
-                            <Buttons target="_blank" Icon="PDF" Url="http://cv.lucasarts.fr/CV.pdf" Name="Voir le CV Papier"/>
-                            <Buttons target="_blank" Icon="Camera" Url="http://cv.lucasarts.fr/CVideo.mp4" Name="Voir le CV Vidéo" className="Secondary-btn"/>
+                            <Buttons target="_blank" Icon="PDFB" Url="http://cv.lucasarts.fr/CV.pdf" Name="Voir le CV Papier"/>
+                            <Buttons target="_blank" Icon="Video" Url="http://cv.lucasarts.fr/CVideo.mp4" Name="Voir le CV Vidéo" className="Secondary-btn"/>
                         </div>
                     </div>                    
                 </div>
@@ -71,7 +71,7 @@ function About(){
                     
                         <p> J'utilise <b>Adobe Lightroom</b> et <b>Photoshop</b> associé au Plugin <b>Lumenzia</b> pour travailler avec des masques de luminances, ce qui offre des possibilités d'éditions plus précises.</p>
 
-                        <Buttons Icon="Galerie" Url="/Photos" Name="Voir la galerie"/>
+                        <Buttons Icon="Photos" Url="/Photos" Name="Voir la galerie"/>
                     </div>
                     <div className='ImageAbout'>                   
                         <Image src={Surface} className="Surface" alt="Interface de Lightroom" style={{ width: '100%', height: 'auto', zIndex: 1 }}/>
@@ -88,7 +88,7 @@ function About(){
                         <p>Ces nombreuses missions m'ont permis d'avoir une <b>expertise globale et complète</b> sur la communication d'une entreprise, aussi bien en interne que pour différents clients. Je suis apte à gérer les processus de <b>création et de diffusion</b> pour différentes campagnes ciblées.</p>
 
                         <p>Les créations étaient nombreuses : <b>Flyers</b>, Kakémono, <b>Vidéos promotionnelles</b>, Photos de produits, Enseigne de boutique, Infographie et représentation de data etc.</p>
-                        <Buttons Icon="Print" Url="/Projects" Name="Voir les projets Print"/>
+                        <Buttons Icon="Printer" Url="/Projects" Name="Voir les projets Print"/>
                     </div>
                     <div className='ImageAbout'>                            
                         <Tilt className='Tilt'>

@@ -39,6 +39,8 @@ a{
   --Loader :   linear-gradient(to right, rgba(20,20,20) 8%, #1d1d1d 18%, rgba(20,20,20) 33%,1);  
   --Overlay : rgba(0,0,0,0.8);
   --Transition : .4s;
+  --start-color: oklch(67.3% 0.266 25.039656026515278);
+  --end-color: oklch(85.82% 0.201 91.19);
 
   /* Circle Menu */
   --CMBorderColor : 0rem solid #0e0e0e;
@@ -163,10 +165,12 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .IconBtn{
   color: var(--TextButton);
+  font-size: 1.2rem;
 }
 
 .ButtonComp svg {
   margin: 0 5px 0 0;
+  height: 100%;
 }
 
 .ButtonComp:hover {
@@ -214,6 +218,12 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 /* Header*/ 
+
+.LogoName{
+  /* background-image: linear-gradient(90deg,var(--start-color),var(--end-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
 
 .FloatHader{
   width: 200px;
@@ -1345,6 +1355,13 @@ p {
   
   .Small .Filtre .FiltreName, .Small .Filtre .FiltreNb  {
     opacity: 0;
+  }
+
+  a.ButtonComp {
+    margin: 20px auto;
+  }
+  .ImageAbout {
+    margin-top: 50px;
   }
 
   

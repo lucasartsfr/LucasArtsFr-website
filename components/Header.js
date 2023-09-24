@@ -15,6 +15,16 @@ export default function Header(){
     const { SearchFunction, setSearchFiltre } = useContext(NextContext);
     const menuRef = useRef();
 
+    function hexToRGBA(hex, reduce) {
+        hex = hex.replace('#', '');              
+        if (hex.length === 3) {
+          hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+        }      
+        const [r, g, b] = hex.match(/[0-9a-f]{2}/g).map((n) => parseInt(n, 16));      
+        // Retourne la valeur rgba()
+        return `rgba(${r-reduce}, ${g-reduce}, ${b-reduce}, 1)`;
+    }
+
     const InputSearch = (e) =>{
         SearchFunction(e.target.value);
         setSearchFiltre(false);
@@ -26,8 +36,9 @@ export default function Header(){
     }
 
     const UpdateTheme = (e) =>{
-        console.log()
+        const RGBA = hexToRGBA(e.currentTarget.value, 40)
         document.documentElement.style.setProperty('--ThemeColor', e.currentTarget.value);
+        document.documentElement.style.setProperty('--ThemeColorHover', RGBA);
     }
 
     // useEffect((e)=>{
@@ -56,7 +67,7 @@ export default function Header(){
                     </div>
                    <div className="QuoteContainer">
                         <Link href="/">
-                            <h2>Lucas Pires</h2>
+                            <h2 className="LogoName">Lucas Pires</h2>
                         </Link>
                    </div>
                 </div>                
@@ -79,12 +90,13 @@ export default function Header(){
                 <Social Url="https://www.linkedin.com/in/lucasarts" Icon="Linkedin"/>
                 <Social Url="https://instagram.com/lucasartsfr" Icon="Instagram"/>
                 <hr></hr>
-                <div className="ColorGeneratorContainer">
-                    <input type="color" className="ColorGenerator"  defaultValue="#0070f3" onChange={UpdateTheme}/>
-                </div>
                 <a onClick={ToggleDarkMode} className="RSIcon DarkMode" data-color="#6e6e6e" aria-label="Light Mode" rel="noreferrer" target="_blank">
                     <Light />
                 </a>
+                <div className="ColorGeneratorContainer">
+                    <input type="color" className="ColorGenerator"  defaultValue="#0070f3" onChange={UpdateTheme}/>
+                </div>
+                
             </div>
 
         </nav>
